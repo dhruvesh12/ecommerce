@@ -1,0 +1,83 @@
+{%extends 'dashboard.html'%}
+{%load static%}
+{% load mathfilters %}
+{%block content%}
+<h1>Order page</h1>
+<!--<table id="customers">
+  <tr>
+    <th>customer</th>
+    <th>Item</th>
+    <th>Bill</th>
+  </tr>
+  <tr>
+  	{%for i in bill%}
+    <td>{{i.From_order}}</td>
+    
+    <td>
+    {%for k in i.order.all%}
+	{{k}},
+	{%endfor%}
+	</td>
+    
+    <td>
+    {%if price%}
+	${{price}}
+	{%endif%}
+	</td>
+    {%endfor%}
+  </tr>
+  
+</table>
+-->
+
+
+<table id="customers">
+  <tr>
+    <th>Customer</th>
+    <th>Items</th>
+    <th>Bills</th>
+    <th>status</th>
+  </tr>
+  {%for i in bill%}
+  {%if i.status == False%}
+  <tr>
+
+    <td>{{i.From_order}}</td>
+      
+    <td>
+      {%for k in i.order.all%}
+      {{k}},
+      {%endfor%}
+  	</td>
+      
+      
+    <td><strong>$</strong>{{i}}</td>
+
+    
+    <td><a href="/dash/{{i.pk}}/confirmed/">Confirmed</a></td>
+
+    {%else%}
+    <tr>
+
+    <td>{{i.From_order}}</td>
+      
+    <td>
+      {%for k in i.order.all%}
+      {{k}},
+      {%endfor%}
+    </td>
+      
+      
+    <td><strong>$</strong>{{i}}</td>
+    <td><a href="/dash/{{i.pk}}/confirmed/">Not Confirmed</a></td>
+    {%endif%}
+  
+    
+    
+    
+  </tr>
+  {%endfor%}
+
+</table>
+
+{%endblock%}

@@ -1,0 +1,30 @@
+{%extends 'dashboard.html'%}
+
+{%block content%}
+
+<strong><h1> Upload Recipe To {%if rest%}{{rest.name}}{%endif%}</h1></strong>
+<form method='post' enctype="multipart/form-data">{% csrf_token %}
+
+	<label for="username"><b>Name</b></label>
+  <input type="text" placeholder="Enter username" name="user_" required><br>
+
+    <label for="username"><b>Upload image</b></label>
+    <input type="file" name="imgs"><br>
+
+  <label for="username"><b>Price</b></label>
+  <input type="number"  name="pri" required><br>
+
+
+    <label for="username"><b>category</b></label>
+    <select name="ftype">
+          {%for i in fod%}
+	    	<option value="{{i.id}}">{{i.name}}</option>
+	      {%endfor%}
+    </select><br>
+
+     <input type="submit" value="Submit">
+
+
+	
+</form>
+{%endblock%}

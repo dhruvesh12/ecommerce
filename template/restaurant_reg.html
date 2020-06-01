@@ -1,0 +1,23 @@
+{%extends 'dashboard.html'%}
+
+{%block content%}
+
+<form method='post' enctype="multipart/form-data">{% csrf_token %}
+
+	<label for="username"><b>Restaurant Name</b></label>
+    <input type="text" placeholder="Enter username" name="rest_name" required><br>
+
+    <label for="username"><b>Address</b></label>
+    <input type="text" placeholder="Enter username" name="address" required><br>
+
+
+    <label for="username"><b>Upload logo</b></label>
+    <input type="file" name="imgs"><br>
+ 
+
+    <input type="submit" value="Submit">
+	
+
+</form>
+
+{%endblock%}

@@ -1,0 +1,21 @@
+{%extends 'dashboard.html'%}
+
+
+{%block content%}
+{%if post%}
+<form method='post' enctype="multipart/form-data">{% csrf_token %}
+  <label for="fname">First name:</label><br>
+  <input type="text" name="name" id="fname" value={{post.name}}><br><br>
+
+  <label for="username">Upload logo</label><br>
+  <input type="file" name="imgs"><br><br>
+
+
+  <label for="fname">Price</label><br>
+  <input type="text" name="pri" id="fname" value={{post.price}}><br><br>
+
+
+  <input type="submit" value="Submit">
+</form> 
+{%endif%}
+{%endblock%}

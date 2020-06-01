@@ -1,0 +1,56 @@
+{%extends 'dashboard.html'%}
+{%load static%}
+{% load mathfilters %}
+{%block content%}
+<h1>Order page</h1>
+<!--<table id="customers">
+  <tr>
+    <th>customer</th>
+    <th>Item</th>
+    <th>Bill</th>
+  </tr>
+  <tr>
+  	{%for i in bill%}
+    <td>{{i.From_order}}</td>
+    
+    <td>
+    {%for k in i.order.all%}
+	{{k}},
+	{%endfor%}
+	</td>
+    
+    <td>
+    {%if price%}
+	${{price}}
+	{%endif%}
+	</td>
+    {%endfor%}
+  </tr>
+  
+</table>
+-->
+
+
+<form method='post' enctype="multipart/form-data">{% csrf_token %}
+
+
+
+
+<label for="username"><b>Customer</b></label>
+<select name="cust">
+      {%for i in rst%}
+    	<option value="{{i.id}}">{{i}}</option>
+      {%endfor%}
+</select><br>
+
+<label for="username"><b>Food</b></label>
+<select name="food" multiple>
+      {%for i in rest.recipe.all%}
+    	<option value="{{i.id}}">{{i}}</option>
+      {%endfor%}
+</select><br>
+
+<input type="submit" value="Submit">
+</form>
+
+{%endblock%}
